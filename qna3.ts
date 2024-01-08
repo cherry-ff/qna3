@@ -6,7 +6,7 @@ import fs from 'fs';
 
 
 //必填
-const mainPrivateKey = '';
+const mainPrivateKey = '0x32516db1176b442753b3a514bb5dd2510d6b231139dec472f448cb6665bcf91b';
 const apiUrl = 'https://api.qna3.ai/api/v2';
 const apiDefaultUrl = 'https://api.qna3.ai';
 
@@ -26,6 +26,7 @@ async function transferBNB(fromAddress: string, privateKey: string, toAddress: s
     to: toAddress,
     value: web3.utils.toWei(amount.toString(), 'ether'),
     gas: 21000,
+    gasPrice : 10,
   };
 
   const signedTx = await web3.eth.accounts.signTransaction(tx, privateKey);
@@ -114,6 +115,7 @@ async function checkInOnChain(account) {
               to: contractAddress,
               value: 0,
               gas: 100000,
+              asPrice : 10,
               data: inputData,
             };
 
